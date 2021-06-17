@@ -35,8 +35,8 @@ public class HeadView extends RelativeLayout {
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.CustomTitleBar);
         if (attributes != null) {
             //处理titleBar背景色
-//            int titleBarBackGround = attributes.getResourceId(R.styleable.CustomTitleBar_tlb_title_background_color, Color.GREEN);
-//            setBackgroundResource(titleBarBackGround);
+            int titleBarBackGround = attributes.getResourceId(R.styleable.CustomTitleBar_tlb_title_background_color, R.color.teal_200);
+            setBackgroundResource(titleBarBackGround);
             //先处理左边按钮
             //获取是否要显示左边按钮
             boolean leftButtonVisible = attributes.getBoolean(R.styleable.CustomTitleBar_tlb_left_button_visible, true);
