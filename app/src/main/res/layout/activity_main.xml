@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:lee="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <com.chengdu.myviewbinding.HeadView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            lee:tlb_right_button_drawable="@mipmap/ic_back"
+            lee:tlb_title_text="自定义view大集合"
+            />
+        <com.chengdu.myviewbinding.GradientTextView
+            android:id="@+id/tv_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:text="带边框的圆形头像" />
+        <com.chengdu.myviewbinding.AvatarView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"/>
+        <com.chengdu.myviewbinding.DashBoard
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"/>
+        <com.chengdu.myviewbinding.PieChart
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"/>
+
+        <com.chengdu.myviewbinding.HistogramView
+            android:id="@+id/histogram"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"/>
+
+        <com.chengdu.myviewbinding.StatisticsView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

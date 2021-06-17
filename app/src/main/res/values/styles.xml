@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTitleBar">
+        <attr name="title_background_color" format="reference|integer" />
+        <attr name="tlb_left_button_visible" format="boolean" />
+        <attr name="tlb_left_button_text" format="string" />
+        <attr name="tlb_left_button_text_color" format="color" />
+        <attr name="tlb_left_button_drawable" format="reference|integer" />
+        <attr name="tlb_right_button_visible" format="boolean" />
+        <attr name="tlb_title_text" format="string" />
+        <attr name="tlb_title_text_color" format="color" />
+        <attr name="tlb_title_background_color" format="color" />
+        <attr name="tlb_title_text_drawable" format="reference|integer" />
+        <attr name="tlb_right_button_text" format="string" />
+        <attr name="tlb_right_button_text_color" format="color" />
+        <attr name="tlb_right_button_drawable" format="reference|integer" />
+    </declare-styleable>
+
+<!--    <declare-styleable name="CustomTitleBar_tlb_title_background_color">-->
+<!--        <attr name="color" format="color"/>-->
+<!--    </declare-styleable>-->
+<!--    <color name="CustomTitleBar_tlb_title_background_color">-->
+<!--    </color>-->
+    <!--<style name="CustomTitleBar_tlb_title_background_color">
+        <item name="color" format="color"/>
+    </style>-->
+</resources>
