@@ -23,9 +23,10 @@ import androidx.appcompat.widget.AppCompatEditText;
  */
 public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditText {
     private final static float TEXT_SIZE = Utils.dp2px(12);
-    private final static float TEXT_VERTICAL_OFFSET = Utils.dp2px(8);//输入框垂直padding
+    private final static float TEXT_VERTICAL_OFFSET = Utils.dp2px(18);//输入框垂直padding
     private final static float TEXT_HORIZONTAL_OFFSET = Utils.dp2px(15);//水平padding
     private final static float TEXT_VERTICAL_SPACE = Utils.dp2px(4);//label和输入框字体间距
+    private final static float TEXT_ANIMATOR_OFFSET = Utils.dp2px(8);//动画移动距离
 
 
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -50,25 +51,32 @@ public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditTex
     }
 
     public MaterialEditText(Context context) {
-        this(context, null);
+        super(context);
+        init(context, null);
     }
 
     public MaterialEditText(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        init(context, attrs);
     }
 
     public MaterialEditText(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText);
-        if (attributes != null) {
-            userFloatingLabel = attributes.getBoolean(R.styleable.MaterialEditText_userFloatingLabel, false);
-        }
-        init();
+        init(context, attrs);
     }
 
-    private void init() {
+    {
         mPaint.setColor(Color.RED);
         mPaint.setTextSize(TEXT_SIZE);
+    }
+
+    private void init(Context context, AttributeSet attrs) {
+        if (attrs != null) {
+            TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText);
+            if (attributes != null) {
+                userFloatingLabel = attributes.getBoolean(R.styleable.MaterialEditText_userFloatingLabel, false);
+            }
+        }
         setPadding();
         if (userFloatingLabel) {
             addTextChangedListener(new TextWatcher() {
@@ -107,6 +115,7 @@ public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditTex
         if (animator == null) {
             animator = ObjectAnimator.ofFloat(MaterialEditText.this, "floatingLabelFraction", 0, 1);
         }
+        animator.setDuration(100);
         return animator;
     }
 
@@ -114,6 +123,7 @@ public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditTex
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setAlpha((int) (0xff * floatingLabelFraction));
-        canvas.drawText(getHint().toString(), TEXT_HORIZONTAL_OFFSET, TEXT_VERTICAL_OFFSET + TEXT_SIZE, mPaint);
+        float extraOffset = TEXT_ANIMATOR_OFFSET * (1 - floatingLabelFraction);
+        canvas.drawText(getHint().toString(), TEXT_HORIZONTAL_OFFSET, TEXT_VERTICAL_OFFSET + TEXT_SIZE + extraOffset, mPaint);
     }
 }
