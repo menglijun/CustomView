@@ -29,6 +29,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
 
+//import com.chengdu.myviewbinding.databinding.ActivityMainBinding;
 import com.chengdu.myviewbinding.databinding.ActivityMainBinding;
 import com.example.qrcode.Constant;
 import com.example.qrcode.ScannerActivity;
@@ -56,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
         mViewBinding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(mViewBinding.getRoot());
+//        mViewBinding.etMaterial.setUserFloatingLabel(true);
+
 //        mViewBinding.textView.setText("jfowegjowgjoagjiowregpqowg");
 //        mViewBinding.textView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -66,19 +69,19 @@ public class MainActivity extends AppCompatActivity {
 //                initPermission();
 //            }
 //        });
-        ArrayList<Long> data = new ArrayList<>();
-        ArrayList<String> names = new ArrayList<>();
-        for (int i = 0; i< 100; i+= 15){
-            data.add(Long.valueOf(i+1));
-            names.add(i+"号");
-        }
-        mViewBinding.histogram.updateThisData(data, names);
+//        ArrayList<Long> data = new ArrayList<>();
+//        ArrayList<String> names = new ArrayList<>();
+//        for (int i = 0; i< 100; i+= 15){
+//            data.add(Long.valueOf(i+1));
+//            names.add(i+"号");
+//        }
+//        mViewBinding.histogram.updateThisData(data, names);
 //        initPermission();
 
 //        SurfaceView
     }
 
-    private void initPermission() {
+    /*private void initPermission() {
         //先申请权限
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             goScanner();
@@ -137,5 +140,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }*/
 }

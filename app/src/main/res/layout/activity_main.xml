@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <com.chengdu.myviewbinding.HeadView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +27,15 @@
             lee:tlb_title_text="自定义组合控件"
             lee:tlb_right_button_text="提交"
             lee:tlb_right_button_text_color="@color/black"/>
+
+        <com.chengdu.myviewbinding.MaterialEditText
+            android:id="@+id/et_material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:userFloatingLabel="true"
+            android:background="@color/pink"
+            android:hint="UserName"/>
+
         <com.chengdu.myviewbinding.GradientTextView
             android:id="@+id/tv_avatar"
             android:layout_width="wrap_content"
@@ -40,10 +50,10 @@
             android:src="@mipmap/ic_launcher"
             app:border_width="3dp"
             app:border_color="#FF222222"/>
-        <com.chengdu.myviewbinding.AvatarView
+        <!--<com.chengdu.myviewbinding.AvatarView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"/>-->
         <com.chengdu.myviewbinding.DashBoard
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -63,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="20dp"/>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
