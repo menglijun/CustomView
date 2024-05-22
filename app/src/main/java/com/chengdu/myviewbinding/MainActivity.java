@@ -14,6 +14,9 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -141,4 +144,26 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }*/
+
+    public Drawable bitmapToDrawable(Bitmap bitmap) {
+        BitmapDrawable drawable = new BitmapDrawable(getResources(), bitmap);
+        return drawable;
+    }
+
+    public Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap = null;
+        if (drawable instanceof BitmapDrawable)
+            bitmap = ((BitmapDrawable) drawable).getBitmap();
+        else {
+            if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+                bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+            } else {
+                bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            }
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+        }
+        return bitmap;
+    }
 }

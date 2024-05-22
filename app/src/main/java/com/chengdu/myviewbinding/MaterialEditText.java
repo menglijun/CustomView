@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 
 /**
+ * 带label的输入框
  * @Author LY
  * @Date 2021/6/5 11:20
  */

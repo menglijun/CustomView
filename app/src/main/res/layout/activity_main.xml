@@ -12,6 +12,18 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <com.chengdu.myviewbinding.TagLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/scan_frame_green_color">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TagOne"
+                android:textColor="@color/black"
+                android:background="@color/color_red"/>
+        </com.chengdu.myviewbinding.TagLayout>
+
         <com.chengdu.myviewbinding.HeadView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
