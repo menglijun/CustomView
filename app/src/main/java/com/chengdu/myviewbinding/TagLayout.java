@@ -13,6 +13,9 @@ import java.util.ArrayList;
  */
 public class TagLayout extends ViewGroup {
 
+    private final static int CHILD_HORIZONTAL_MARGIN = (int) Utils.dp2px(5);
+    private final static int CHILD_TOP_MARGIN = (int) Utils.dp2px(5);
+
     private ArrayList<Rect> childRectList = new ArrayList<>();
 
     public TagLayout(Context context) {
@@ -39,29 +42,34 @@ public class TagLayout extends ViewGroup {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int widthUsed = 0;
-        int heightUsed = 0;
+        int widthUsed = getPaddingLeft();
+        int heightUsed = getPaddingTop();
         int width = 0;
         int height = 0;
+        int itemHeightMax = 0;
+        int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            measureChildWithMargins(child, widthMeasureSpec, widthUsed, heightMeasureSpec, heightUsed);
+            measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, heightUsed);
+            if ((widthUsed + child.getMeasuredWidth()) > (widthSpecSize - getPaddingRight()) ) {
+                widthUsed = getPaddingLeft();
+                heightUsed += itemHeightMax + CHILD_TOP_MARGIN;
+            }
             Rect rect;
             if (childRectList.size() > i) {
                 rect = childRectList.get(i);
             } else {
                 rect = new Rect();
-            }
-            if ((widthUsed + child.getMeasuredWidth()) > widthMeasureSpec ) {
-                widthUsed = 0;
+                childRectList.add(rect);
             }
             rect.set(widthUsed, heightUsed, widthUsed + child.getMeasuredWidth(), heightUsed + child.getMeasuredHeight());
-            childRectList.set(i, rect);
-            widthUsed += child.getMeasuredWidth();
-            width = Math.max(width, widthUsed);
-            height = Math.max(height, heightUsed);
+            widthUsed += child.getMeasuredWidth() + CHILD_HORIZONTAL_MARGIN * 2;
+            itemHeightMax = (int) Math.max(itemHeightMax, child.getMeasuredHeight());
+//            heightUsed = Math.max(heightUsed, child.getMeasuredHeight());
         }
-        setMeasuredDimension(width, height);
+        width = Math.max(width, widthUsed);
+        height = Math.max(height, itemHeightMax + heightUsed) + getPaddingBottom();
+        setMeasuredDimension(widthMeasureSpec, height);
     }
 
     @Override
@@ -70,5 +78,10 @@ public class TagLayout extends ViewGroup {
             View child = getChildAt(i);
             child.layout(childRectList.get(i).left, childRectList.get(i).top, childRectList.get(i).right, childRectList.get(i).bottom);
         }
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new MarginLayoutParams(getContext(), attrs);
     }
 }
