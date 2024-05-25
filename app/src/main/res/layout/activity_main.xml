@@ -29,74 +29,11 @@
             lee:tlb_right_button_text_color="@color/black"/>
 
         <com.chengdu.myviewbinding.TagLayout
+            android:id="@+id/tagLayout"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="wrap_content"
             android:padding="10dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag1"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦啦啦啦2"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦啦啦啦3"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦啦啦4"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦啦5"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦啦啦啦6"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦7"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦8"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Tag啦啦啦啦啦啦9"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_green_c5"/>
-        </com.chengdu.myviewbinding.TagLayout>
+            android:background="@color/white"/>
 
         <com.chengdu.myviewbinding.MaterialEditText
             android:id="@+id/et_material"

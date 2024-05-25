@@ -44,6 +44,8 @@ import com.google.zxing.Result;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
         mViewBinding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(mViewBinding.getRoot());
+        List<String> tagList = new ArrayList<>();
+        String s = "啦啦啦啦啦";
+        for (int i = 0; i < 10; i++){
+            Random random = new Random();
+            int j = random.nextInt(5);
+
+            tagList.add("Tag" + s.substring(0, j) + i);
+        }
+        mViewBinding.tagLayout.setData(tagList);
 //        mViewBinding.etMaterial.setUserFloatingLabel(true);
 
 //        mViewBinding.textView.setText("jfowegjowgjoagjiowregpqowg");

@@ -5,8 +5,10 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tag流式布局
@@ -32,6 +34,21 @@ public class TagLayout extends ViewGroup {
 
     public TagLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    public void setData(List<String> list) {
+        if (list != null && list.size() > 0) {
+            for (String item : list) {
+                TextView textView = new TextView(getContext());
+                textView.setText(item);
+                textView.setPadding((int) Utils.dp2px(5), (int) Utils.dp2px(5), (int) Utils.dp2px(5), (int) Utils.dp2px(5));
+                textView.setBackgroundResource(R.drawable.bg_green_c5);
+                textView.setTextColor(getResources().getColor(R.color.white));
+                MarginLayoutParams marginLayoutParams = new MarginLayoutParams(generateDefaultLayoutParams());
+                textView.setLayoutParams(marginLayoutParams);
+                addView(textView);
+            }
+        }
     }
 
     /**
