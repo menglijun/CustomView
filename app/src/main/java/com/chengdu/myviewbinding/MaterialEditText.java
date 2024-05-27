@@ -121,6 +121,11 @@ public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditTex
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setAlpha((int) (0xff * floatingLabelFraction));

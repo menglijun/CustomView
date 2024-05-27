@@ -30,6 +30,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceView;
 import android.view.View;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 //import com.chengdu.myviewbinding.databinding.ActivityMainBinding;
@@ -65,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
         mViewBinding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(mViewBinding.getRoot());
-        List<String> tagList = new ArrayList<>();
+
+
+        initWebView();
+
+        /*List<String> tagList = new ArrayList<>();
         String s = "啦啦啦啦啦";
         for (int i = 0; i < 10; i++){
             Random random = new Random();
@@ -73,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
             tagList.add("Tag" + s.substring(0, j) + i);
         }
-        mViewBinding.tagLayout.setData(tagList);
+        mViewBinding.tagLayout.setData(tagList);*/
 //        mViewBinding.etMaterial.setUserFloatingLabel(true);
 
 //        mViewBinding.textView.setText("jfowegjowgjoagjiowregpqowg");
@@ -93,6 +102,42 @@ public class MainActivity extends AppCompatActivity {
 //        initPermission();
 
 //        SurfaceView
+    }
+
+    private void initWebView() {
+
+        mViewBinding.webView.getSettings().setJavaScriptEnabled(true);
+        mViewBinding.webView.addJavascriptInterface(new WebAppInterface(this), "Android");
+        mViewBinding.webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return super.shouldOverrideUrlLoading(view, request);
+            }
+
+        });
+        mViewBinding.webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, Message resultMsg) {
+                // 处理外部链接打开新窗口，可以自定义新窗口的打开方式
+                // 比如使用当前WebView来显示新内容
+                // ...
+                return true;
+            }
+
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                // 处理JS对话框，比如alert, confirm, prompt
+                // ...
+                return true;
+            }
+        });
+        mViewBinding.webView.loadUrl("file:///android_asset/test.html");
+
     }
 
     /*private void initPermission() {
