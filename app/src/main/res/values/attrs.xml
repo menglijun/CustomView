@@ -3,4 +3,9 @@
     <declare-styleable name="MaterialEditText">
         <attr name="userFloatingLabel" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="DashLineView">
+        <attr name="paintColor" format="color"/>
+        <attr name="dashWidth" format="dimension"/>
+        <attr name="dashDistance" format="dimension"/>
+    </declare-styleable>
 </resources>

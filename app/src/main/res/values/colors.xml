@@ -10,4 +10,5 @@
     <color name="pink">#FFFF99FF</color>
     <color name="color_red">#FF0000</color>
     <color name="color_yellow">#FFFF00</color>
+    <color name="color_EDEDED">#EDEDED</color>
 </resources>
